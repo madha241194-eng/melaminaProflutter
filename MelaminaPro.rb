@@ -1,9 +1,16 @@
+require File.join(__dir__, "MelaminaPro", "main")
+
 module MelaminaPro
-  VERSION = "1.0.0"
 
-  def self.create_cabinet
-    UI.messagebox("Melamina Pro - Cabinet Creator")
+  unless file_loaded?(__FILE__)
+
+    menu = UI.menu("Extensions")
+
+    menu.add_item("Melamina Pro - Create Cabinet") {
+      MelaminaPro.create_cabinet
+    }
+
+    file_loaded(__FILE__)
   end
-end
 
-MelaminaPro.create_cabinet
+end
